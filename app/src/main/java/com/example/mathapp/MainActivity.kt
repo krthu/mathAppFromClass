@@ -6,12 +6,19 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
-import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.ActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 
 class MainActivity : AppCompatActivity() {
     private lateinit var questionView: TextView
     private lateinit var answerView: EditText
-    var operationsList = listOf("+")
+    private val intentResultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
+        result ->
+        if (result.resultCode == RESULT_OK){
+            getValuesFromResult(result)
+        }
+    }
+    var operationsList = mutableListOf("+")
     var correctAnswer: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,7 +38,10 @@ class MainActivity : AppCompatActivity() {
         settingsButton.setOnClickListener {
 
             intent = Intent(this, SettingsActivity::class.java)
-            startActivity(intent)
+            intent.putExtra("addition", (operationsList.contains("+")))
+            intent.putExtra("subtraction", (operationsList.contains("-")))
+            intent.putExtra("multiplication", (operationsList.contains("*")))
+            intentResultLauncher.launch(intent)
         }
 
     }
@@ -54,6 +64,19 @@ class MainActivity : AppCompatActivity() {
         return answer == correctAnswer
     }
 
+    fun getValuesFromResult(result: ActivityResult){
+        operationsList.clear()
+        if(result.data?.getBooleanExtra("addition", false) == true){
+            operationsList.add("+")
+        }
+        if(result.data?.getBooleanExtra("subtraction", false) == true){
+            operationsList.add("-")
+        }
+        if(result.data?.getBooleanExtra("multiplication", false) == true){
+            operationsList.add("*")
+        }
+    }
+
     fun getQuestion(): String{
         val operation = operationsList.random()
         val firstNumber = (1..10).random()
@@ -74,12 +97,6 @@ class MainActivity : AppCompatActivity() {
             } else -> {
                 return "Something went wrong!"
             }
-
-
         }
-
-
-
-
     }
 }
