@@ -1,3 +1,17 @@
 <resources>
     <string name="app_name">MathApp</string>
+    <string name="answerHint">Answer</string>
+    <string name="submitButton">Submit</string>
+    <string name="correctAnswer">You are Correct!</string>
+    <string name="wrongAnswer">You are wrong!</string>
+    <string name="backButton">Back</string>
+    <string name="settingsIncluded">Operations</string>
+    <string name="settingsButton">Settings</string>
+    <string name="additionCB">Addition</string>
+    <string name="subtractionCB">Subtraction</string>
+    <string name="multiplication">Multiplication</string>
+    <string name="division">Division</string>
+    <string name="saveButton">Save</string>
+
+
 </resources>
