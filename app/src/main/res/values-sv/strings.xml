@@ -1,0 +1,17 @@
+<resources>
+
+    <string name="answerHint">Svar</string>
+    <string name="submitButton">Skicka</string>
+    <string name="correctAnswer">Du har rätt!</string>
+    <string name="wrongAnswer">Du har fel!</string>
+    <string name="backButton">Tillbaka</string>
+    <string name="settingsIncluded">Räknesätt</string>
+    <string name="settingsButton">Inställningar</string>
+    <string name="additionCB">Addition</string>
+    <string name="subtractionCB">Subtraktion</string>
+    <string name="multiplication">Multiplikation</string>
+    <string name="division">Division</string>
+    <string name="saveButton">Spara</string>
+
+
+</resources>
